@@ -1,0 +1,93 @@
+QMainWindow {
+    background-color: #f4f7fb;
+}
+
+QLabel {
+    color: #1f2933;
+    font-size: 13px;
+}
+
+QPushButton {
+    background-color: #275dad;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 11px;
+    font-size: 13px;
+    min-height: 18px;
+}
+
+QPushButton:hover {
+    background-color: #1f4f95;
+}
+
+QPushButton:pressed {
+    background-color: #173f7a;
+}
+
+QPushButton:checked {
+    background-color: #1a7a56;
+}
+
+QToolButton#imageToolButton {
+    background-color: #275dad;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+QToolButton#imageToolButton:hover {
+    background-color: #1f4f95;
+}
+
+QToolButton#imageToolButton:pressed {
+    background-color: #173f7a;
+}
+
+QToolButton#imageToolButton:checked {
+    background-color: #1a7a56;
+}
+
+QTextEdit {
+    background-color: white;
+    border: 1px solid #c8d1db;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 13px;
+}
+
+QTableWidget {
+    background-color: white;
+    border: 1px solid #c8d1db;
+    border-radius: 8px;
+    gridline-color: #e4eaf2;
+}
+
+QHeaderView::section {
+    background-color: #e8eff8;
+    color: #1f2933;
+    border: none;
+    border-bottom: 1px solid #c8d1db;
+    padding: 6px;
+}
+
+QStatusBar {
+    background: #dce6f3;
+    color: #1f2933;
+}
+
+#dropArea {
+    background-color: white;
+    border: 2px dashed #7c97ba;
+    border-radius: 12px;
+    color: #3c4e63;
+    font-size: 14px;
+}
+
+#rotationLabel {
+    color: #5d6c7f;
+    font-size: 12px;
+    padding: 0 6px 2px 0;
+}
