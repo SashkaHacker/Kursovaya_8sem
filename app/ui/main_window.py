@@ -26,6 +26,7 @@ from app.config import APP_TITLE, DB_PATH, UPLOADS_DIR
 from app.database.db_service import DatabaseService
 from app.models.history_entry import HistoryEntry
 from app.services.image_preprocessing_service import ImagePreprocessingService
+from app.services.nlp_service import NLPService
 from app.services.ocr_service import OCRService
 from app.ui.image_drop_widget import ImageDropWidget
 
@@ -39,6 +40,7 @@ class MainWindow(QMainWindow):
 
         self.preprocessing_service = ImagePreprocessingService()
         self.ocr_service = OCRService()
+        self.nlp_service = NLPService()
         self.db_service = DatabaseService(DB_PATH)
 
         self.current_image_path: str = ""
@@ -265,9 +267,14 @@ class MainWindow(QMainWindow):
                 QMessageBox.warning(self, "OCR", "OCR не вернул текст")
                 return
 
-            self.text_output.setPlainText(recognized_text)
+            processed_text = self.nlp_service.clean_ocr_text(recognized_text)
+            if not processed_text:
+                QMessageBox.warning(self, "NLP", "После очистки текст пустой")
+                return
+
+            self.text_output.setPlainText(processed_text)
             self.statusBar().showMessage(
-                "Распознавание выполнено. При необходимости отредактируйте текст и нажмите 'Сохранить в историю'"
+                "Распознавание и NLP-очистка выполнены. Отредактируйте текст при необходимости и сохраните в историю"
             )
 
         except RuntimeError as exc:
